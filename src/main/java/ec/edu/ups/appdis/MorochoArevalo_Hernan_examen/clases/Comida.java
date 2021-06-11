@@ -1,10 +1,17 @@
 package ec.edu.ups.appdis.MorochoArevalo_Hernan_examen.clases;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Comida {
+@Table(name="comidas")
+
+public class Comida implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	@Id	
 	private int id;
 	private String nombre;

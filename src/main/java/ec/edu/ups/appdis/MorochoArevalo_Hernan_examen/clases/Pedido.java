@@ -1,17 +1,29 @@
 package ec.edu.ups.appdis.MorochoArevalo_Hernan_examen.clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="pedidos")
 
-public class Pedido {
+public class Pedido implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public List<Comida> getListaComidas() {
+		return listaComidas;
+	}
+	public void setListaComidas(List<Comida> listaComidas) {
+		this.listaComidas = listaComidas;
+	}
 	@Id
 	private int id;
 	private GregorianCalendar fecha;
@@ -19,8 +31,10 @@ public class Pedido {
 	private double subtotal;
 	private int iva;
 	private String observaciones;
-	
+	@OneToMany
 	private List<Comida> listaComidas;
+	
+	private Tarjeta tarjeta;
 	
 	public Pedido() {
 		listaComidas = new ArrayList<Comida>();
@@ -62,6 +76,12 @@ public class Pedido {
 	}
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
+	}
+	public Tarjeta getTarjeta() {
+		return tarjeta;
+	}
+	public void setTarjeta(Tarjeta tarjeta) {
+		this.tarjeta = tarjeta;
 	}
 
 }
