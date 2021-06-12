@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,12 +18,7 @@ public class Pedido implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public List<Comida> getListaComidas() {
-		return listaComidas;
-	}
-	public void setListaComidas(List<Comida> listaComidas) {
-		this.listaComidas = listaComidas;
-	}
+	
 	@Id
 	private int id;
 	private GregorianCalendar fecha;
@@ -31,7 +26,7 @@ public class Pedido implements Serializable {
 	private double subtotal;
 	private int iva;
 	private String observaciones;
-	@OneToMany
+	@ManyToMany(targetEntity = Comida.class)
 	private List<Comida> listaComidas;
 	
 	private Tarjeta tarjeta;
@@ -82,6 +77,12 @@ public class Pedido implements Serializable {
 	}
 	public void setTarjeta(Tarjeta tarjeta) {
 		this.tarjeta = tarjeta;
+	}
+	public List<Comida> getListaComidas() {
+		return listaComidas;
+	}
+	public void setListaComidas(List<Comida> listaComidas) {
+		this.listaComidas = listaComidas;
 	}
 
 }

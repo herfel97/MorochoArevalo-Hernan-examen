@@ -19,8 +19,8 @@
 		<div class="form-group">
 			<h:outputLabel for="username" class="control-label col-sm-4">Fecha</h:outputLabel>
 			<div class="col-sm-4">
-				<h:inputText id="name-id" value="#{pedidoBean.fecha}" class="form-control"
-					validatorMessage="User name is required">
+				<h:inputText id="name-id" value="#{pedidoBean.fecha}"
+					class="form-control">
 					<f:validateRequired />
 				</h:inputText>
 			</div>
@@ -28,13 +28,12 @@
 		<div class="form-group">
 			<h:outputLabel for="email" class="control-label col-sm-4">Cliente</h:outputLabel>
 			<div class="col-sm-4">
-				<h:inputText id="email-id" value="#{user.email}"
-					class="form-control">
+				<h:inputText id="email-id" value="#{null}" class="form-control">
 					<f:validateRequired />
 				</h:inputText>
 			</div>
 		</div>
-		
+
 		<div class="form-group">
 			<h:outputLabel for="detalle" class="control-label col-sm-4">Detalle</h:outputLabel>
 			<div class="col-sm-4">
@@ -44,31 +43,85 @@
 				</h:inputSecret>
 			</div>
 		</div>
-		
+
 		<div class="form-group">
 			<h:outputLabel for="detalle" class="control-label col-sm-4">Comidas</h:outputLabel>
 			<div class="col-sm-4">
-			<h:selectOneMenu value="">  </h:selectOneMenu>
-				<f:selectItem noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}" />
-				<f:selectItems value = "#{pedidoBean.listaComidas}" var="com" itemLabel="#{com.nombre}"></f:selectItems>
-				
+				<h:selectOneMenu value="#{pedidoBean.listaComidas}">
+					<f:selectItem noSelectionOption="true" itemLabel="Seleccione"
+						itemValue="#{null}" />
+					<f:selectItems value="#{pedidoBean.listaComidas}" var="com"
+						itemLabel="#{com.nombre}" itemValue="#{com}"></f:selectItems>
+
+				</h:selectOneMenu>
+
 			</div>
 		</div>
-		
+
 		<div class="form-group">
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
 				<div class="col-sm-2">
-					<h:commandButton value="Save" action="#{user.save()}"
+					<h:commandButton value="Save" action="#{pedidoBean.guardar()}"
 						class="btn btn-success" style="width: 80px;"></h:commandButton>
 				</div>
 				<div class="col-sm-1"></div>
 				<div class="col-sm-2">
-					<h:link outcome="index" value="Ver Pedidos"
-						class="btn btn-primary" />
+					<h:link outcome="index" value="Ver Pedidos" class="btn btn-primary" />
 				</div>
 			</div>
 		</div>
 	</h:form>
+
+			<div id="right-panel" class="right-panel">
+				<!-- Header-->
+				<header id="header" class="header">
+
+				<div class="top-right">
+					<div class="header-menu">
+						<div class="header-left">
+							<button class="search-trigger">
+								<i class="fa fa-search"></i>
+							</button>
+							<div class="form-inline">
+								<form class="search-form">
+									<input class="form-control mr-sm-2" type="text"
+										placeholder="Search ..." aria-label="Search" />
+									<button class="search-close" type="submit">
+										<i class="fa fa-close"></i>
+									</button>
+								</form>
+							</div>
+						</div>
+
+						<div class="user-area dropdown float-right">
+							<a href="#" class="dropdown-toggle active" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false"> <h:graphicImage
+									class="user-avatar rounded-circle" name="img/avatar/elfo.jpg"
+									alt="User Avatar" />
+							</a>
+
+							<div class="user-menu dropdown-menu">
+
+								<h:link class="nav-link" outcome="micuenta">
+									<i class="fa fa-user"></i> Mi Cuenta
+                                </h:link>
+
+								<!--<a class="nav-link" href="#"><i class="fa fa-cog"></i>Settings</a>-->
+								<h:form>
+									<h:commandLink class="nav-link" action="#{loginBean.logout()}">
+										<i class="fa fa-power-off"></i>Logout
+                                    </h:commandLink>
+								</h:form>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				</header>
+			</div>
+
+
+
 </h:body>
 </html>

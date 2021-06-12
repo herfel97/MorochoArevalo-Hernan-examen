@@ -1,11 +1,10 @@
-package ec.edu.ups.appdis.MorochoArevalo_Hernan_examen.vista;
+package ec.edu.ups.appdis.MorochoArevalo_Hernan_examen.ejb;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import ec.edu.ups.appdis.MorochoArevalo_Hernan_examen.clases.Pedido;
-import ec.edu.ups.appdis.MorochoArevalo_Hernan_examen.ejb.AbstractFacade;
 
 @Stateless
 public class PedidoFacade extends AbstractFacade<Pedido>{
