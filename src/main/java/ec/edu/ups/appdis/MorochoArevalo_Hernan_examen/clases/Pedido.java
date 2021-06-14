@@ -2,17 +2,22 @@ package ec.edu.ups.appdis.MorochoArevalo_Hernan_examen.clases;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="pedidos")
-
 public class Pedido implements Serializable {
 	/**
 	 * 
@@ -20,15 +25,18 @@ public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private GregorianCalendar fecha;
+	private Date fecha;
 	private String nombreCliente;
 	private double subtotal;
 	private int iva;
 	private String observaciones;
-	@ManyToMany(targetEntity = Comida.class)
+	
+	@ManyToMany
 	private List<Comida> listaComidas;
 	
+	@ManyToOne
 	private Tarjeta tarjeta;
 	
 	public Pedido() {
@@ -42,10 +50,11 @@ public class Pedido implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public GregorianCalendar getFecha() {
+
+	public Date getFecha() {
 		return fecha;
 	}
-	public void setFecha(GregorianCalendar fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 	public String getNombreCliente() {

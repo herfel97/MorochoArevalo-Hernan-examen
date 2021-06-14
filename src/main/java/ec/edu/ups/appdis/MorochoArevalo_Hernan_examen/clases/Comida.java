@@ -1,11 +1,12 @@
 package ec.edu.ups.appdis.MorochoArevalo_Hernan_examen.clases;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,20 +16,15 @@ public class Comida implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Id	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nombre;
 	private double precioUnitario;
-	
-	@ManyToMany(targetEntity = Pedido.class)
-	private List<Pedido> pedidos;
-	
-	
+
 	
 	public Comida() {
 		
 	}
-	
-	
 	 
 	@Override
 	public int hashCode() {
@@ -54,13 +50,10 @@ public class Comida implements Serializable {
 		return true;
 	}
 
-
-
 	@Override
 	public String toString() {
 	    return String.format("%s[id=%d]", getClass().getSimpleName(), getId());
 	}
-
 
 	public int getId() {
 		return id;
@@ -81,13 +74,5 @@ public class Comida implements Serializable {
 		this.precioUnitario = precioUnitario;
 	}
 
-	public List<Pedido> getPedidos() {
-		return pedidos;
-	}
-
-	public void setPedidos(List<Pedido> pedidos) {
-		this.pedidos = pedidos;
-	}
-	
 	
 }

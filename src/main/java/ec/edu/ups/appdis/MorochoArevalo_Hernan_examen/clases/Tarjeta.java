@@ -1,10 +1,8 @@
 package ec.edu.ups.appdis.MorochoArevalo_Hernan_examen.clases;
 
 import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Tarjeta implements Serializable{
@@ -20,9 +18,7 @@ public class Tarjeta implements Serializable{
 	private String fechaCaducidad;
 	private String codigoVerificacion;
 	
-	@ManyToOne
-	private Pedido pedido;
-
+	
 	public Tarjeta() {
 		
 	}
@@ -65,14 +61,6 @@ public class Tarjeta implements Serializable{
 
 	public void setCodigoVerificacion(String codigoVerificacion) {
 		this.codigoVerificacion = codigoVerificacion;
-	}
-
-	public Pedido getPedido() {
-		return pedido;
-	}
-
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
 	}
 
 }
