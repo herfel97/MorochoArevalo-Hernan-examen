@@ -25,8 +25,9 @@ public class PedidoFacade extends AbstractFacade<Pedido>{
 
 	public List<Pedido> listarPorTarjeta(String numTarjeta){
 		
-		
-		
+		String jpql = "SELECT p FROM Pedido p WHERE p.tarjeta.numeroTarjeta='"+numTarjeta+"'";
+		System.out.println(jpql);
+		return em.createQuery(jpql).getResultList();
 	}
 	
 }

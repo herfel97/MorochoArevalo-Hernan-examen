@@ -6,7 +6,7 @@
 	xmlns:a="http://xmlns.jcp.org/jsf/passth/rough"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>Kushki Bank</title>
+	<title>Restaurant</title>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="css/bootstrap.min.css"></link>
@@ -25,7 +25,7 @@
 	<!--Header-part-->
 	<div id="header">
 		<h1>
-			<a href="crearPedido.xhtml">Kushki Bank</a>
+			<a href="crearPedido.xhtml">Mega Burguer</a>
 		</h1>
 	</div>
 	<!--close-Header-part-->
@@ -45,14 +45,11 @@
 		<h:form>
 			<ul>
 				<li><i class="icon icon-th-list"></i><span class="text"><h:commandLink
-							action="crearPedido.xhtml" value="Crear Usuario" /></span></li>
+							action="crearPedido.xhtml" value="Ingresar pedidos" /></span></li>
 				<li><i class="icon icon-th"></i><span class="text"><h:commandLink
-							action="listaUsuarios.xhtml" value="Lista de Usuarios" /></span></li>
-				<li><i class="icon icon-th"></i><span class="text"><h:commandLink
-							action="parametrosInteres.xhtml" value="Parametrizar Interes" /></span></li>
-
-				<li><i class="icon-key"></i><span class="text"> <h:commandLink
-							action="#{loginUsuario.cerrarSesion()}" value="Cerrar Sesion" /></span></li>
+							action="busqueda.xhtml" value="Listar Pedidos" /></span></li>
+							<li><i class="icon icon-th"></i><span class="text"><h:commandLink
+							action="crearComida.xhtml" value="Crear platillos" /></span></li>
 
 			</ul>
 		</h:form>

@@ -46,6 +46,7 @@ public class PedidoBean implements Serializable {
 	String fecha;
 
 	String detalle = "";
+	String numTarjeta = "";
 
 	List<Comida> listaComidas;
 	List<Tarjeta> listaTarjetas;
@@ -55,8 +56,10 @@ public class PedidoBean implements Serializable {
 	private Comida comida = new Comida();
 	private Tarjeta tarjeta = new Tarjeta();
 	private String cliente;
+	private Pedido pedido;
 	
 	private List<Pedido> listaPedidos = new ArrayList<Pedido>();
+	private List<Pedido> listaBusqueda = new ArrayList<Pedido>();
 	
 	int cantidad;
 	List<DetallePedido> listaDetalles = new ArrayList<DetallePedido>();
@@ -171,6 +174,35 @@ public class PedidoBean implements Serializable {
 	public void setListaPedidos(List<Pedido> listaPedidos) {
 		this.listaPedidos = listaPedidos;
 	}
+	
+
+	
+	
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
+
+	public String getNumTarjeta() {
+		return numTarjeta;
+	}
+
+	public void setNumTarjeta(String numTarjeta) {
+		this.numTarjeta = numTarjeta;
+	}
+	
+	
+
+	public List<Pedido> getListaBusqueda() {
+		return listaBusqueda;
+	}
+
+	public void setListaBusqueda(List<Pedido> listaBusqueda) {
+		this.listaBusqueda = listaBusqueda;
+	}
 
 	public void agregar() {
 		DetallePedido deta = new DetallePedido();
@@ -203,9 +235,13 @@ public class PedidoBean implements Serializable {
 		}
 		return null;
 	}
-
-	public void remover(int index) {
-		this.listaDetalles.remove(index);
+	
+	public void listarPedidos() {
+	listaBusqueda =	 pedidoFacade.listarPorTarjeta(this.numTarjeta);	
+	}
+	
+	public void buscarPedido(String id) {
+		pedidoFacade.find(id);
 	}
 
 }
