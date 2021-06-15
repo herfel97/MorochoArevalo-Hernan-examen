@@ -1,5 +1,7 @@
 package ec.edu.ups.appdis.MorochoArevalo_Hernan_examen.ejb;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,4 +23,10 @@ public class PedidoFacade extends AbstractFacade<Pedido>{
 		return em;
 	}
 
+	public List<Pedido> listarPorTarjeta(String numTarjeta){
+		
+		
+		
+	}
+	
 }
